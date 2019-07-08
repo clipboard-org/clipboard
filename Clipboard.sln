@@ -5,7 +5,15 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D5EA6FD1-4372-4D08-89F4-A47A81DAB2B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clipboard", "src\Clipboard\Clipboard.csproj", "{8D23AE93-67BE-4011-905E-63B5BDFDE8A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clipboard", "src\Clipboard\Clipboard.csproj", "{8D23AE93-67BE-4011-905E-63B5BDFDE8A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clipboard.Pdf", "src\Clipboard.Pdf\Clipboard.Pdf.csproj", "{7397B3F7-A339-48FF-ACEE-FA491248E0EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clipboard.IFilter", "src\Clipboard.IFilter\Clipboard.IFilter.csproj", "{363FE0CE-96D6-45A7-AA50-A7FCDE564CB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clipboard.Abstraction", "src\Clipboard.Abstraction\Clipboard.Abstraction.csproj", "{D0AFFD1F-B660-4A77-8590-753E80FDC217}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clipboard.OpenXml", "src\Clipboard.OpenXml\Clipboard.OpenXml.csproj", "{28B85526-14D9-49DE-9A8F-C457A7A030FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +25,32 @@ Global
 		{8D23AE93-67BE-4011-905E-63B5BDFDE8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D23AE93-67BE-4011-905E-63B5BDFDE8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D23AE93-67BE-4011-905E-63B5BDFDE8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7397B3F7-A339-48FF-ACEE-FA491248E0EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7397B3F7-A339-48FF-ACEE-FA491248E0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7397B3F7-A339-48FF-ACEE-FA491248E0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7397B3F7-A339-48FF-ACEE-FA491248E0EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{363FE0CE-96D6-45A7-AA50-A7FCDE564CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{363FE0CE-96D6-45A7-AA50-A7FCDE564CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{363FE0CE-96D6-45A7-AA50-A7FCDE564CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{363FE0CE-96D6-45A7-AA50-A7FCDE564CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0AFFD1F-B660-4A77-8590-753E80FDC217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AFFD1F-B660-4A77-8590-753E80FDC217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AFFD1F-B660-4A77-8590-753E80FDC217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AFFD1F-B660-4A77-8590-753E80FDC217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B85526-14D9-49DE-9A8F-C457A7A030FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B85526-14D9-49DE-9A8F-C457A7A030FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B85526-14D9-49DE-9A8F-C457A7A030FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B85526-14D9-49DE-9A8F-C457A7A030FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8D23AE93-67BE-4011-905E-63B5BDFDE8A1} = {D5EA6FD1-4372-4D08-89F4-A47A81DAB2B7}
+		{7397B3F7-A339-48FF-ACEE-FA491248E0EB} = {D5EA6FD1-4372-4D08-89F4-A47A81DAB2B7}
+		{363FE0CE-96D6-45A7-AA50-A7FCDE564CB5} = {D5EA6FD1-4372-4D08-89F4-A47A81DAB2B7}
+		{D0AFFD1F-B660-4A77-8590-753E80FDC217} = {D5EA6FD1-4372-4D08-89F4-A47A81DAB2B7}
+		{28B85526-14D9-49DE-9A8F-C457A7A030FC} = {D5EA6FD1-4372-4D08-89F4-A47A81DAB2B7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2181E6B1-B6DA-4079-9F04-E5B73B182D0C}

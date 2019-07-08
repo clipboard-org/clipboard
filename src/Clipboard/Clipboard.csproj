@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="itext7" Version="7.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interop\" />
+    <ProjectReference Include="..\Clipboard.Abstraction\Clipboard.Abstraction.csproj" />
+    <ProjectReference Include="..\Clipboard.IFilter\Clipboard.IFilter.csproj" />
+    <ProjectReference Include="..\Clipboard.Pdf\Clipboard.Pdf.csproj" />
   </ItemGroup>
 
 </Project>

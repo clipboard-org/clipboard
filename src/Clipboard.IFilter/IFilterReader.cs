@@ -3,7 +3,7 @@ using Clipboard.Interop;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Clipboard.Core
+namespace Clipboard.IFilter
 {
     internal class IFilterReader : IDocumentReader
     {

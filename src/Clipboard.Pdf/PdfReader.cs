@@ -5,9 +5,9 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clipboard.Core
+namespace Clipboard.Pdf
 {
-    internal class PdfReader : IDocumentReader
+    public class PdfReader : IDocumentReader
     {
         public string Read(FileStream fileStream)
         {
