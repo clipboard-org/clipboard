@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Clipboard.Abstraction\Clipboard.Abstraction.csproj" />
     <ProjectReference Include="..\Clipboard.IFilter\Clipboard.IFilter.csproj" />
+    <ProjectReference Include="..\Clipboard.OpenXml\Clipboard.OpenXml.csproj" />
     <ProjectReference Include="..\Clipboard.Pdf\Clipboard.Pdf.csproj" />
   </ItemGroup>
 
