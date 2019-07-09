@@ -1,6 +1,8 @@
 ﻿using Clipboard.Abstraction;
+using Clipboard.IFilter;
 using Clipboard.OpenXml;
 using Clipboard.Pdf;
+using System.Runtime.InteropServices;
 
 namespace Clipboard.Core
 {
@@ -37,6 +39,9 @@ namespace Clipboard.Core
                 case ContentTypeNames.Application.ppsm:
                     return new PowerpointReader();
                 default:
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                        return new IFilterReader();
+
                     throw new System.Exception("Unsupported file type");
             }
         }

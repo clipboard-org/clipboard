@@ -1,6 +1,8 @@
 ﻿using Clipboard.Abstraction;
-using System;
+using DocumentFormat.OpenXml.Drawing;
+using DocumentFormat.OpenXml.Packaging;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Clipboard.OpenXml
@@ -9,12 +11,25 @@ namespace Clipboard.OpenXml
     {
         public string Read(FileStream fileStream)
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+
+            using (var doc = PresentationDocument.Open(fileStream, false))
+            {
+                foreach (var slide in doc.PresentationPart.SlideParts)
+                {
+                    foreach (var text in slide.Slide.Descendants<Text>())
+                    {
+                        sb.Append(text.Text);
+                    }
+                }
+            }
+
+            return sb.ToString();
         }
 
         public Task<string> ReadAsync(FileStream fileStream)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Read(fileStream));
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Clipboard.Abstraction;
-using Microsoft.AspNetCore.StaticFiles;
+﻿using Microsoft.AspNetCore.StaticFiles;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -9,20 +8,34 @@ namespace Clipboard.Core
     internal class TextExtractor : IDisposable
     {
         private readonly FileStream _fileStream;
+        private bool _disposeStream;
 
-        public TextExtractor(FileStream fileStream)
+        private TextExtractor(FileStream fileStream)
         {
             _fileStream = fileStream;
+            _disposeStream = false;
         }
 
-        public TextExtractor(string filePath)
+        private TextExtractor(string filePath)
         {
             _fileStream = File.OpenRead(filePath);
+            _disposeStream = true;
+        }
+
+        public static TextExtractor Open(string filePath)
+        {
+            return new TextExtractor(filePath);
+        }
+
+        public static TextExtractor Open(FileStream fileStream)
+        {
+            return new TextExtractor(fileStream);
         }
 
         public void Dispose()
         {
-            _fileStream.Dispose();
+            if (_disposeStream)
+                _fileStream.Dispose();
         }
 
         public string Extract()
@@ -44,7 +57,7 @@ namespace Clipboard.Core
 
             if (!provider.TryGetContentType(fileName, out contentType))
             {
-                contentType = "application/octet-stream";
+                contentType = ContentTypeNames.Application.Octet;
             }
             return contentType;
         }

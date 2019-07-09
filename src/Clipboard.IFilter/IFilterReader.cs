@@ -1,42 +1,57 @@
 ﻿using Clipboard.Abstraction;
 using Clipboard.Interop;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace Clipboard.IFilter
 {
-    internal class IFilterReader : IDocumentReader
+    public class IFilterReader : IDocumentReader
     {
         public string Read(FileStream fileStream)
         {
-            var tempFile = $"{Path.GetTempPath()}{fileStream.Name}";
-
-            using (var ms = new MemoryStream())
+            try
             {
-                fileStream.CopyTo(ms);
-                File.WriteAllBytes(tempFile, ms.ToArray());
+                var tempFile = $"{Path.GetTempPath()}{fileStream.Name}";
+
+                using (var ms = new MemoryStream())
+                {
+                    fileStream.CopyTo(ms);
+                    File.WriteAllBytes(tempFile, ms.ToArray());
+                }
+
+                using (var r = new FilterReader(tempFile))
+                {
+                    return r.ReadToEnd();
+                }
             }
-
-            using (var r = new FilterReader(tempFile))
+            catch(Exception e)
             {
-                return r.ReadToEnd();
+                throw new Exception("Unsupported file type");
             }
         }
 
         public async Task<string> ReadAsync(FileStream fileStream)
         {
-            var tempFile = $"{Path.GetTempPath()}{fileStream.Name}";
-
-            using (var ms = new MemoryStream())
+            try
             {
-                await fileStream.CopyToAsync(ms);
-                File.WriteAllBytes(tempFile, ms.ToArray());
-            }
+                var tempFile = $"{Path.GetTempPath()}{fileStream.Name}";
 
-            using (var r = new FilterReader(tempFile))
-            {
-                return  await r.ReadToEndAsync();
+                using (var ms = new MemoryStream())
+                {
+                    await fileStream.CopyToAsync(ms);
+                    File.WriteAllBytes(tempFile, ms.ToArray());
+                }
+
+                using (var r = new FilterReader(tempFile))
+                {
+                    return await r.ReadToEndAsync();
+                }
             }
+            catch (Exception e)
+            {
+                throw new Exception("Unsupported file type");
+            }            
         }
     }
 }
