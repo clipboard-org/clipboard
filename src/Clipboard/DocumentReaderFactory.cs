@@ -1,10 +1,9 @@
 ﻿using Clipboard.Abstraction;
 using Clipboard.IFilter;
-using Clipboard.OpenXml;
 using Clipboard.Pdf;
 using System.Runtime.InteropServices;
 
-namespace Clipboard.Core
+namespace Clipboard
 {
     public static class DocumentReaderFactory
     {
@@ -15,11 +14,14 @@ namespace Clipboard.Core
                 case ContentTypeNames.Application.Pdf:
                     return new PdfReader();
                 case ContentTypeNames.Application.doc :
+                case ContentTypeNames.Application.docm:
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                        return new Office.WordReader();
+                    throw new System.Exception("Unsupported file type");
                 case ContentTypeNames.Application.docx:
                 case ContentTypeNames.Application.dotx:
-                case ContentTypeNames.Application.docm:
                 case ContentTypeNames.Application.dotm:
-                    return new WordReader();
+                    return new OpenXml.WordReader();
                 case ContentTypeNames.Application.xls :
                 case ContentTypeNames.Application.xlsx:
                 case ContentTypeNames.Application.xltx:
@@ -27,7 +29,7 @@ namespace Clipboard.Core
                 case ContentTypeNames.Application.xltm:
                 case ContentTypeNames.Application.xlam:
                 case ContentTypeNames.Application.xlsb:
-                    return new ExcelReader();
+                    return new OpenXml.ExcelReader();
                 case ContentTypeNames.Application.ppt :
                 case ContentTypeNames.Application.pps :
                 case ContentTypeNames.Application.pptx:
@@ -37,7 +39,7 @@ namespace Clipboard.Core
                 case ContentTypeNames.Application.pptm:
                 case ContentTypeNames.Application.potm:
                 case ContentTypeNames.Application.ppsm:
-                    return new PowerpointReader();
+                    return new OpenXml.PowerpointReader();
                 default:
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                         return new IFilterReader();

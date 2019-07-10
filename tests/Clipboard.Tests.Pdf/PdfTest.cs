@@ -1,44 +1,11 @@
-using System.Threading.Tasks;
-using Xunit;
+using Clipboard.Tests.Word;
 
 namespace Clipboard.Tests.Pdf
 {
-    public class PdfTest
+    public class PdfTest : BaseTest
     {
-        [Fact]
-        public void Extract_Large_NoException()
+        public PdfTest() : base("pdf")
         {
-
-        }
-
-        [Fact]
-        public async Task Extract_Async_Large_NoException()
-        {
-
-        }
-
-        [Fact]
-        public void Extract_Corrupt_Exception()
-        {
-
-        }
-
-        [Fact]
-        public async Task Extract_Async_Corrupt_Exception()
-        {
-
-        }
-
-        [Fact]
-        public void Extract_Missing_Exception()
-        {
-
-        }
-
-        [Fact]
-        public async Task Extract_Async_Missing_Exception()
-        {
-
         }
     }
 }

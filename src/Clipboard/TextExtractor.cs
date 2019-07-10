@@ -3,9 +3,9 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Clipboard.Core
+namespace Clipboard
 {
-    internal class TextExtractor : IDisposable
+    public class TextExtractor : IDisposable
     {
         private readonly FileStream _fileStream;
         private bool _disposeStream;
