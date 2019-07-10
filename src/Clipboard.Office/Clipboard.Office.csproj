@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Clipboard.Abstraction\Clipboard.Abstraction.csproj" />
+    <ProjectReference Include="..\Clipboard.Abstraction\Clipboard.Abstraction.csproj" />
   </ItemGroup>
 
 </Project>
