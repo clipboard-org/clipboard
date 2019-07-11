@@ -31,7 +31,7 @@ namespace Clipboard
                 case ContentTypeNames.Application.xlsb:
                     return new OpenXml.ExcelReader();
                 case ContentTypeNames.Application.ppt :
-                case ContentTypeNames.Application.pps :
+                    throw new System.Exception("Unsupported file type");
                 case ContentTypeNames.Application.pptx:
                 case ContentTypeNames.Application.potx:
                 case ContentTypeNames.Application.ppsx:

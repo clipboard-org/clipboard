@@ -7,14 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="assets\corrupt.pdf" />
     <None Remove="assets\example.pdf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="assets\corrupt.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="assets\example.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

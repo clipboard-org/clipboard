@@ -29,7 +29,7 @@
 
             public const string ppt = "application/vnd.ms-powerpoint";
             public const string pot = "application/vnd.ms-powerpoint";
-            public const string pps = "application/vnd.ms-powerpointp";
+            public const string pps = "application/vnd.ms-powerpoint";
             public const string ppa = "application/vnd.ms-powerpoint";
             public const string pptx = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
             public const string potx = "application/vnd.openxmlformats-officedocument.presentationml.template";

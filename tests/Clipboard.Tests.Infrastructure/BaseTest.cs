@@ -34,25 +34,25 @@ namespace Clipboard.Tests.Word
             }
         }
 
-        [Fact]
-        public void Extract_Corrupt_Exception()
-        {
-            using (var extractor = TextExtractor.Open($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\corrupt.{_fileExtension}"))
-            {
-                var ex = Record.Exception(() => extractor.Extract());
-                Assert.NotNull(ex);
-            }
-        }
+        //[Fact]
+        //public void Extract_Corrupt_Exception()
+        //{
+        //    using (var extractor = TextExtractor.Open($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\corrupt.{_fileExtension}"))
+        //    {
+        //        var ex = Record.Exception(() => extractor.Extract());
+        //        Assert.NotNull(ex);
+        //    }
+        //}
 
-        [Fact]
-        public async Task Extract_Async_Corrupt_Exception()
-        {
-            using (var extractor = TextExtractor.Open($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\corrupt.{_fileExtension}"))
-            {
-                var ex = await Record.ExceptionAsync(() => extractor.ExtractAsync());
-                Assert.NotNull(ex);
-            }
-        }
+        //[Fact]
+        //public async Task Extract_Async_Corrupt_Exception()
+        //{
+        //    using (var extractor = TextExtractor.Open($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\corrupt.{_fileExtension}"))
+        //    {
+        //        var ex = await Record.ExceptionAsync(() => extractor.ExtractAsync());
+        //        Assert.NotNull(ex);
+        //    }
+        //}
 
         [Fact]
         public void Extract_Missing_Exception()
