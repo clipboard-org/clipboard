@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="assets\example.csv" />
     <None Remove="assets\example.xlsm" />
     <None Remove="assets\example.xlsx" />
     <None Remove="assets\example.xltm" />
@@ -15,9 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="assets\example.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="assets\example.xlsm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

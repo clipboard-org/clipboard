@@ -36,6 +36,8 @@ namespace Clipboard
                     return new OpenXml.PowerpointReader();
                 case ContentTypeNames.Text.Plain:
                     return new Text.PlainReader();
+                case ContentTypeNames.Text.Csv:
+                    return new Text.CsvReader();
                 default:
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                         return new IFilterReader();

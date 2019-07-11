@@ -51,6 +51,7 @@
         {
             public const string Html = "text/html";
             public const string Plain = "text/plain";
+            public const string Csv = "text/csv";
             public const string RichText = "text/richtext";
             public const string Xml = "text/xml";
         }

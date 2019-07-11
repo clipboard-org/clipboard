@@ -1,4 +1,4 @@
-using Clipboard.Tests.Word;
+﻿using Clipboard.Tests.Infrastructure;
 
 namespace Clipboard.Tests.Pdf
 {

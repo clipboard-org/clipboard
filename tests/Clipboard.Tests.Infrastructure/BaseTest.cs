@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Clipboard.Tests.Word
+namespace Clipboard.Tests.Infrastructure
 {
     public abstract class BaseTest
     {

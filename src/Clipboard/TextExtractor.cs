@@ -52,7 +52,7 @@ namespace Clipboard
 
         private string GetContentType(string fileName)
         {
-            var provider = new FileExtensionContentTypeProvider();
+            var provider = new FileExtensionContentTypeProvider(new CustomMimeMappings());
             string contentType;
 
             if (!provider.TryGetContentType(fileName, out contentType))
