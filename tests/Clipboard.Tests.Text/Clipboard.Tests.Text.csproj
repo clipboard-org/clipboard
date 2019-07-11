@@ -10,6 +10,7 @@
     <None Remove="assets\example.csv" />
     <None Remove="assets\example.html" />
     <None Remove="assets\example.txt" />
+    <None Remove="assets\example.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\example.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\example.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
