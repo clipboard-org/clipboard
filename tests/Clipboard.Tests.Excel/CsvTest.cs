@@ -2,9 +2,9 @@
 
 namespace Clipboard.Tests.Excel
 {
-    public class XlsTest : BaseTest
+    public class CsvTest : BaseTest
     {
-        public XlsTest() : base("xls")
+        public CsvTest() : base("csv")
         {
         }
     }

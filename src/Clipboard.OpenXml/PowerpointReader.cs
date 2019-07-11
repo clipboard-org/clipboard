@@ -2,6 +2,7 @@
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Packaging;
 using System.IO;
+using System.IO.Packaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace Clipboard.OpenXml
         {
             var sb = new StringBuilder();
 
-            using (var doc = PresentationDocument.Open(fileStream, false))
+            using (var doc = PresentationDocument.Open(Package.Open(fileStream)))
             {
                 foreach (var slide in doc.PresentationPart.SlideParts)
                 {

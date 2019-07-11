@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RtfPipe" Version="1.0.7092.25824" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Clipboard.Abstraction\Clipboard.Abstraction.csproj" />
+  </ItemGroup>
+
+</Project>

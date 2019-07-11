@@ -1,6 +1,5 @@
 ﻿using Clipboard.Abstraction;
 using Clipboard.IFilter;
-using Clipboard.Pdf;
 using System.Runtime.InteropServices;
 
 namespace Clipboard
@@ -12,34 +11,31 @@ namespace Clipboard
             switch(contentType)
             {
                 case ContentTypeNames.Application.Pdf:
-                    return new PdfReader();
-                case ContentTypeNames.Application.doc :
-                case ContentTypeNames.Application.docm:
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                        return new Office.WordReader();
-                    throw new System.Exception("Unsupported file type");
-                case ContentTypeNames.Application.docx:
-                case ContentTypeNames.Application.dotx:
-                case ContentTypeNames.Application.dotm:
+                    return new Pdf.PdfReader();
+                case ContentTypeNames.Application.Docx:
+                case ContentTypeNames.Application.Dotx:
+                case ContentTypeNames.Application.Dotm:
                     return new OpenXml.WordReader();
-                case ContentTypeNames.Application.xls :
-                case ContentTypeNames.Application.xlsx:
-                case ContentTypeNames.Application.xltx:
-                case ContentTypeNames.Application.xlsm:
-                case ContentTypeNames.Application.xltm:
-                case ContentTypeNames.Application.xlam:
-                case ContentTypeNames.Application.xlsb:
+                case ContentTypeNames.Application.Xls :
+                case ContentTypeNames.Application.Xlsx:
+                case ContentTypeNames.Application.Xltx:
+                case ContentTypeNames.Application.Xlsm:
+                case ContentTypeNames.Application.Xltm:
+                case ContentTypeNames.Application.Xlam:
+                case ContentTypeNames.Application.Xlsb:
                     return new OpenXml.ExcelReader();
-                case ContentTypeNames.Application.ppt :
+                case ContentTypeNames.Application.Ppt :
                     throw new System.Exception("Unsupported file type");
-                case ContentTypeNames.Application.pptx:
-                case ContentTypeNames.Application.potx:
-                case ContentTypeNames.Application.ppsx:
-                case ContentTypeNames.Application.ppam:
-                case ContentTypeNames.Application.pptm:
-                case ContentTypeNames.Application.potm:
-                case ContentTypeNames.Application.ppsm:
+                case ContentTypeNames.Application.Pptx:
+                case ContentTypeNames.Application.Potx:
+                case ContentTypeNames.Application.Ppsx:
+                case ContentTypeNames.Application.Ppam:
+                case ContentTypeNames.Application.Pptm:
+                case ContentTypeNames.Application.Potm:
+                case ContentTypeNames.Application.Ppsm:
                     return new OpenXml.PowerpointReader();
+                case ContentTypeNames.Text.Plain:
+                    return new Text.PlainReader();
                 default:
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                         return new IFilterReader();

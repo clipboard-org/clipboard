@@ -3,6 +3,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using System;
 using System.IO;
+using System.IO.Packaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace Clipboard.OpenXml
         public string Read(FileStream fileStream)
         {
             var sb = new StringBuilder();
-            using (var doc = WordprocessingDocument.Open(fileStream, false))
+            using (var doc = WordprocessingDocument.Open(Package.Open(fileStream)))
             {
                 var body = doc.MainDocumentPart.Document.Body;
                 foreach(var element in body.Elements())
