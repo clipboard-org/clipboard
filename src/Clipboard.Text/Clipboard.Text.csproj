@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.9" />
     <PackageReference Include="RtfPipe" Version="1.0.7092.25824" />
   </ItemGroup>
 

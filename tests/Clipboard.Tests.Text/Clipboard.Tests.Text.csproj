@@ -8,11 +8,15 @@
 
   <ItemGroup>
     <None Remove="assets\example.csv" />
+    <None Remove="assets\example.html" />
     <None Remove="assets\example.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="assets\example.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\example.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\example.txt">

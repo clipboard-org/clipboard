@@ -38,6 +38,8 @@ namespace Clipboard
                     return new Text.PlainReader();
                 case ContentTypeNames.Text.Csv:
                     return new Text.CsvReader();
+                case ContentTypeNames.Text.Html:
+                    return new Text.HtmlReader();
                 default:
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                         return new IFilterReader();
