@@ -43,6 +43,11 @@ steps:
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'tests/**/*.csproj'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
