@@ -21,11 +21,19 @@ steps:
     version: '2.2.300'
 
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet restore'
+  displayName: 'dotnet test'
   inputs:
-    command: 'restore'
-    projects: '**/*.csproj' 
-    verbosityRestore: 'Quiet'
+    command: 'test'
+    projects: |
+      tests/**/*.csproj
+      !tests/*Infrastructure*/*.csproj
+
+# - task: DotNetCoreCLI@2
+#   displayName: 'dotnet restore'
+#   inputs:
+#     command: 'restore'
+#     projects: '**/*.csproj' 
+#     verbosityRestore: 'Quiet'
 
 
 - task: DotNetCoreCLI@2
@@ -42,14 +50,6 @@ steps:
     packagesToPack: 'src/**/*.csproj'
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet test'
-  inputs:
-    command: 'test'
-    projects: |
-      tests/**/*.csproj
-      !tests/*Infrastructure*/*.csproj
 
 - task: PublishBuildArtifacts@1
   inputs:
