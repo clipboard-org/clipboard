@@ -50,6 +50,7 @@ steps:
     projects: |
       tests/**/*.csproj
       !tests/*Infrastructure*/*.csproj
+    arguments: '-- xunit.parallelizeAssembly=true'
 
 - task: PublishBuildArtifacts@1
   inputs:
