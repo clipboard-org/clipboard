@@ -43,21 +43,11 @@ steps:
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*tests*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    runInParallel: true
-    codeCoverageEnabled: false
-
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
   inputs:
     command: 'test'
-    projects: 'tests/**/*!(infrastructure).csproj'
+    projects: 'tests/unit/**/*.csproj'
 
 - task: PublishBuildArtifacts@1
   inputs:
