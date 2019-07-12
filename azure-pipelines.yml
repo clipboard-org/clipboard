@@ -47,7 +47,9 @@ steps:
   displayName: 'dotnet test'
   inputs:
     command: 'test'
-    projects: 'tests/unit/**/*.csproj'
+    projects: |
+      tests/**/*.csproj
+      !tests/*Infrastructure*/*.csproj
 
 - task: PublishBuildArtifacts@1
   inputs:
