@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Matt Hope</Authors>
+    <Description>A c# library that provides the ability to extract text from various document file formats, e.g. pdf, docx, ppt, etc...</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/clipboard-org/clipboard</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/clipboard-org/clipboard</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>text extraction documents pdf word excel powerpoint</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +22,13 @@
     <ProjectReference Include="..\Clipboard.OpenXml\Clipboard.OpenXml.csproj" />
     <ProjectReference Include="..\Clipboard.Pdf\Clipboard.Pdf.csproj" />
     <ProjectReference Include="..\Clipboard.Text\Clipboard.Text.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

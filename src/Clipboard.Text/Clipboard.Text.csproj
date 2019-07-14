@@ -2,11 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Matt Hope</Authors>
+    <Description>A c# library that provides the ability to extract text from various document file formats, e.g. pdf, docx, ppt, etc...</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/clipboard-org/clipboard</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/clipboard-org/clipboard</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>text extraction documents pdf word excel powerpoint</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.9" />
-    <PackageReference Include="RtfPipe" Version="1.0.7092.25824" />
   </ItemGroup>
 
   <ItemGroup>
