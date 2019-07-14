@@ -22,7 +22,8 @@ using(var exractor = TextExtractor.Open("example.docx"))
 
     // Call the ExtractAsync method to execute asynchronosly
     var text = await extractor.ExtractAsync()
-}```
+}
+```
 
 ## Supported file types
 
