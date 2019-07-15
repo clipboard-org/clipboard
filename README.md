@@ -21,7 +21,7 @@ using(var exractor = TextExtractor.Open("example.docx"))
     var text = extractor.Extract();
 
     // Call the ExtractAsync method to execute asynchronosly
-    var text = await extractor.ExtractAsync()
+    var text = await extractor.ExtractAsync();
 }
 ```
 
