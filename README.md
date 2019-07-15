@@ -1,7 +1,7 @@
 # Clipboard
 Text exctraction done the easy way
 
-[![Build Status](https://dev.azure.com/matthewhope396/Clipboard/_apis/build/status/AtLeastITry.clipboard?branchName=master)](https://dev.azure.com/matthewhope396/Clipboard/_build/latest?definitionId=2&branchName=master)
+[![Build Status](https://dev.azure.com/matthewhope396/Clipboard/_apis/build/status/clipboard-org.clipboard?branchName=master)](https://dev.azure.com/matthewhope396/Clipboard/_build/latest?definitionId=4&branchName=master)
 
 ## Getting started
 ### Referencing the package
