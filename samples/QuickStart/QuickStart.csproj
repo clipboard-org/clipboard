@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="example.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="example.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Clipboard\Clipboard.csproj" />
+  </ItemGroup>
+
+</Project>
