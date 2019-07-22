@@ -27,10 +27,10 @@ using(var exractor = TextExtractor.Open("example.docx"))
 
 ## Supported file types
 
-| Type       | Name                                     |
-|------------|------------------------------------------|
-| Excel      | xlsm, .xlsx, .xltm, .xltx                |
-| Pdf        | .pdf                                     |
-| Powerpoint | .potm, .potx, .ppsm, .ppsx, .pptm, .pptx |
-| Text       | .csv, .htm, .txt, .xml                   |
-| Word       | .docx, .dotm, .dotx                      |
+| Type       | Name                                      |
+|------------|-------------------------------------------|
+| Excel      | xlsm, .xlsx, .xltm, .xltx                 |
+| Pdf        | .pdf                                      |
+| Powerpoint | .potm, .potx, .ppsm, .ppsx, .pptm, .pptx  |
+| Text       | .csv, .html, .txt, .xml                   |
+| Word       | .docx, .dotm, .dotx                       |
