@@ -5,11 +5,11 @@ using Clipboard.Abstraction;
 
 namespace Clipboard.Text
 {
-    public class CsvReader : IDocumentReader
+    public sealed class CsvReader : IDocumentReader
     {
-        public string Read(FileStream fileStream)
+        public string Read(Stream stream)
         {
-            using (var sr = new StreamReader(fileStream))
+            using (var sr = new StreamReader(stream))
             {
                 var sb = new StringBuilder();
 
@@ -26,9 +26,9 @@ namespace Clipboard.Text
             }
         }
 
-        public Task<string> ReadAsync(FileStream fileStream)
+        public Task<string> ReadAsync(Stream stream)
         {
-            return Task.FromResult(Read(fileStream));
+            return Task.FromResult(Read(stream));
         }
     }
 }

@@ -1,17 +1,17 @@
-﻿using Clipboard.Abstraction;
-using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas.Parser;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Clipboard.Abstraction;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Parser;
 
 namespace Clipboard.Pdf
 {
-    public class PdfReader : IDocumentReader
+    public sealed class PdfReader : IDocumentReader
     {
-        public string Read(FileStream fileStream)
+        public string Read(Stream stream)
         {
-            using (var pdfReader = new iText.Kernel.Pdf.PdfReader(fileStream))
+            using (var pdfReader = new iText.Kernel.Pdf.PdfReader(stream))
             using (var document = new PdfDocument(pdfReader))
             {
                 var sb = new StringBuilder();
@@ -28,9 +28,9 @@ namespace Clipboard.Pdf
             }
         }
 
-        public Task<string> ReadAsync(FileStream fileStream)
+        public Task<string> ReadAsync(Stream stream)
         {
-            return Task.FromResult(Read(fileStream));
+            return Task.FromResult(Read(stream));
         }
     }
 }

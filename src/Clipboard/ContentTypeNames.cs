@@ -1,4 +1,6 @@
-﻿namespace Clipboard
+﻿using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("Clipboard.Tests.Infrastructure")]
+namespace Clipboard
 {
     internal static class ContentTypeNames
     {

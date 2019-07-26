@@ -5,7 +5,7 @@ namespace Clipboard.Abstraction
 {
     public interface IDocumentReader
     {
-        Task<string> ReadAsync(FileStream fileStream);
-        string Read(FileStream fileStream);
+        Task<string> ReadAsync(Stream stream);
+        string Read(Stream stream);
     }
 }
