@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.StaticFiles;
 using Xunit;
 
 namespace Clipboard.Tests.Infrastructure
@@ -15,7 +16,7 @@ namespace Clipboard.Tests.Infrastructure
         }
 
         [Fact]
-        public void Extract_NoException()
+        public void Extract_FromFilePath_NoException()
         {
             using (var extractor = TextExtractor.Open($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}"))
             {
@@ -25,7 +26,7 @@ namespace Clipboard.Tests.Infrastructure
         }
 
         [Fact]
-        public async Task Extract_Async_NoException()
+        public async Task Extract_FromFilePath_Async_NoException()
         {
             using (var extractor = TextExtractor.Open($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}"))
             {
@@ -34,28 +35,56 @@ namespace Clipboard.Tests.Infrastructure
             }
         }
 
-        //[Fact]
-        //public void Extract_Corrupt_Exception()
-        //{
-        //    using (var extractor = TextExtractor.Open($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\corrupt.{_fileExtension}"))
-        //    {
-        //        var ex = Record.Exception(() => extractor.Extract());
-        //        Assert.NotNull(ex);
-        //    }
-        //}
+        [Fact]
+        public void Extract_FromFileStream_NoException()
+        {
+            var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
 
-        //[Fact]
-        //public async Task Extract_Async_Corrupt_Exception()
-        //{
-        //    using (var extractor = TextExtractor.Open($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\corrupt.{_fileExtension}"))
-        //    {
-        //        var ex = await Record.ExceptionAsync(() => extractor.ExtractAsync());
-        //        Assert.NotNull(ex);
-        //    }
-        //}
+            using (var extractor = TextExtractor.Open(fileStream))
+            {
+                var text = extractor.Extract();
+                Assert.False(string.IsNullOrEmpty(text));
+            }
+        }
 
         [Fact]
-        public void Extract_Missing_Exception()
+        public async Task Extract_FromFileStream_Async_NoException()
+        {
+            var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
+
+            using (var extractor = TextExtractor.Open(fileStream))
+            {
+                var text = await extractor.ExtractAsync();
+                Assert.False(string.IsNullOrEmpty(text));
+            }
+        }
+
+        [Fact]
+        public void Extract_FromStreamAndContentType_NoException()
+        {
+            var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
+
+            using (var extractor = TextExtractor.Open(fileStream, TextExtractor.GetContentType(fileStream.Name)))
+            {
+                var text = extractor.Extract();
+                Assert.False(string.IsNullOrEmpty(text));
+            }
+        }
+
+        [Fact]
+        public async Task Extract_FromStreamAndContentType_Async_NoException()
+        {
+            var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
+
+            using (var extractor = TextExtractor.Open(fileStream,  TextExtractor.GetContentType(fileStream.Name)))
+            {
+                var text = await extractor.ExtractAsync();
+                Assert.False(string.IsNullOrEmpty(text));
+            }
+        }
+
+        [Fact]
+        public void Extract_FromFilePath_Missing_Exception()
         {
             var ex = Record.Exception(() =>
             {
@@ -69,11 +98,75 @@ namespace Clipboard.Tests.Infrastructure
         }
 
         [Fact]
-        public async Task Extract_Async_Missing_Exception()
+        public async Task Extract_FromFilePath_Async_Missing_Exception()
         {
             var ex = await Record.ExceptionAsync(() =>
             {
                 using (var extractor = TextExtractor.Open($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\missing.{_fileExtension}"))
+                {
+                    return extractor.ExtractAsync();
+                }
+            });
+
+            Assert.NotNull(ex);
+        }
+
+        [Fact]
+        public void Extract_FromFileStream_Missing_Exception()
+        {
+            var ex = Record.Exception(() =>
+            {
+                var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\missing.{_fileExtension}");
+
+                using (var extractor = TextExtractor.Open(fileStream))
+                {
+                    return extractor.Extract();
+                }
+            });
+
+            Assert.NotNull(ex);
+        }
+
+        [Fact]
+        public async Task Extract_FromFileStream_Async_Missing_Exception()
+        {
+            var ex = await Record.ExceptionAsync(() =>
+            {
+                var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\missing.{_fileExtension}");
+
+                using (var extractor = TextExtractor.Open(fileStream))
+                {
+                    return extractor.ExtractAsync();
+                }
+            });
+
+            Assert.NotNull(ex);
+        }
+
+        [Fact]
+        public void Extract_FromStreamAndContentType_Missing_Exception()
+        {
+            var ex = Record.Exception(() =>
+            {
+                var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\missing.{_fileExtension}");
+
+                using (var extractor = TextExtractor.Open(fileStream, TextExtractor.GetContentType(fileStream.Name)))
+                {
+                    return extractor.Extract();
+                }
+            });
+
+            Assert.NotNull(ex);
+        }
+
+        [Fact]
+        public async Task Extract_FromStreamAndContentType_Async_Missing_Exception()
+        {
+            var ex = await Record.ExceptionAsync(() =>
+            {
+                var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\missing.{_fileExtension}");
+
+                using (var extractor = TextExtractor.Open(fileStream, TextExtractor.GetContentType(fileStream.Name)))
                 {
                     return extractor.ExtractAsync();
                 }

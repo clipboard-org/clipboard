@@ -1,20 +1,20 @@
-﻿using Clipboard.Abstraction;
-using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Packaging;
-using System;
+﻿using System;
 using System.IO;
 using System.IO.Packaging;
 using System.Text;
 using System.Threading.Tasks;
+using Clipboard.Abstraction;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
 
 namespace Clipboard.OpenXml
 {
-    public class WordReader : IDocumentReader
+    public sealed class WordReader : IDocumentReader
     {
-        public string Read(FileStream fileStream)
+        public string Read(Stream stream)
         {
             var sb = new StringBuilder();
-            using (var doc = WordprocessingDocument.Open(Package.Open(fileStream)))
+            using (var doc = WordprocessingDocument.Open(Package.Open(stream)))
             {
                 var body = doc.MainDocumentPart.Document.Body;
                 foreach(var element in body.Elements())
@@ -26,9 +26,9 @@ namespace Clipboard.OpenXml
             return sb.ToString();
         }
 
-        public Task<string> ReadAsync(FileStream fileStream)
+        public Task<string> ReadAsync(Stream stream)
         {
-            return Task.FromResult(Read(fileStream));
+            return Task.FromResult(Read(stream));
         }
 
         private string InternalRead(OpenXmlElement element)

@@ -6,21 +6,21 @@ using HtmlAgilityPack;
 
 namespace Clipboard.Text
 {
-    public class HtmlReader : IDocumentReader
+    public sealed class HtmlReader : IDocumentReader
     {
-        public string Read(FileStream fileStream)
+        public string Read(Stream stream)
         {
             var sb = new StringBuilder();
             var doc = new HtmlDocument();
-            doc.Load(fileStream);
+            doc.Load(stream);
             Read(doc.DocumentNode, sb);
 
             return sb.ToString();
         }
 
-        public Task<string> ReadAsync(FileStream fileStream)
+        public Task<string> ReadAsync(Stream stream)
         {
-            return Task.FromResult(Read(fileStream));
+            return Task.FromResult(Read(stream));
         }
 
         private void ReadInner(HtmlNode node, StringBuilder sb)

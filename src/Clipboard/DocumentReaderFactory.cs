@@ -1,13 +1,11 @@
-﻿using System.Runtime.InteropServices;
-using Clipboard.Abstraction;
-using Clipboard.IFilter;
+﻿using Clipboard.Abstraction;
 using Clipboard.OpenXml;
 using Clipboard.Pdf;
 using Clipboard.Text;
 
 namespace Clipboard
 {
-    public static class DocumentReaderFactory
+    internal static class DocumentReaderFactory
     {
         public static IDocumentReader Create(string contentType)
         {
@@ -46,9 +44,6 @@ namespace Clipboard
                 case ContentTypeNames.Text.Xml:
                     return new XmlReader();
                 default:
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                        return new IFilterReader();
-
                     throw new System.Exception("Unsupported file type");
             }
         }

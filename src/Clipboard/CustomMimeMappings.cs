@@ -2,7 +2,7 @@
 
 namespace Clipboard
 {
-    public class CustomMimeMappings : Dictionary<string, string>
+    internal class CustomMimeMappings : Dictionary<string, string>
     {
         public CustomMimeMappings()
         {

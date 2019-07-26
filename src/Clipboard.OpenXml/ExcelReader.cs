@@ -10,12 +10,12 @@ using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace Clipboard.OpenXml
 {
-    public class ExcelReader : IDocumentReader
+    public sealed class ExcelReader : IDocumentReader
     {
-        public string Read(FileStream fileStream)
+        public string Read(Stream stream)
         {
             var sb = new StringBuilder();
-            using(var document = SpreadsheetDocument.Open(Package.Open(fileStream)))
+            using(var document = SpreadsheetDocument.Open(Package.Open(stream)))
             {
                 var stringValues = document.WorkbookPart.SharedStringTablePart.SharedStringTable.Elements<SharedStringItem>().ToArray();
 
@@ -45,9 +45,9 @@ namespace Clipboard.OpenXml
             return sb.ToString();
         }
 
-        public Task<string> ReadAsync(FileStream fileStream)
+        public Task<string> ReadAsync(Stream stream)
         {
-            return Task.FromResult(Read(fileStream));
+            return Task.FromResult(Read(stream));
         }
     }
 }

@@ -1,20 +1,20 @@
-﻿using Clipboard.Abstraction;
-using DocumentFormat.OpenXml.Drawing;
-using DocumentFormat.OpenXml.Packaging;
-using System.IO;
+﻿using System.IO;
 using System.IO.Packaging;
 using System.Text;
 using System.Threading.Tasks;
+using Clipboard.Abstraction;
+using DocumentFormat.OpenXml.Drawing;
+using DocumentFormat.OpenXml.Packaging;
 
 namespace Clipboard.OpenXml
 {
-    public class PowerpointReader : IDocumentReader
+    public sealed class PowerpointReader : IDocumentReader
     {
-        public string Read(FileStream fileStream)
+        public string Read(Stream stream)
         {
             var sb = new StringBuilder();
 
-            using (var doc = PresentationDocument.Open(Package.Open(fileStream)))
+            using (var doc = PresentationDocument.Open(Package.Open(stream)))
             {
                 foreach (var slide in doc.PresentationPart.SlideParts)
                 {
@@ -28,9 +28,9 @@ namespace Clipboard.OpenXml
             return sb.ToString();
         }
 
-        public Task<string> ReadAsync(FileStream fileStream)
+        public Task<string> ReadAsync(Stream stream)
         {
-            return Task.FromResult(Read(fileStream));
+            return Task.FromResult(Read(stream));
         }
     }
 }

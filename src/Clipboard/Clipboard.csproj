@@ -11,6 +11,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>text extract document word pdf excel xml html powerpoint</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Clipboard.Abstraction\Clipboard.Abstraction.csproj" />
-    <ProjectReference Include="..\Clipboard.IFilter\Clipboard.IFilter.csproj" />
     <ProjectReference Include="..\Clipboard.OpenXml\Clipboard.OpenXml.csproj" />
     <ProjectReference Include="..\Clipboard.Pdf\Clipboard.Pdf.csproj" />
     <ProjectReference Include="..\Clipboard.Text\Clipboard.Text.csproj" />

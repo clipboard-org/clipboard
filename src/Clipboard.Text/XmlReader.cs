@@ -5,18 +5,18 @@ using Clipboard.Abstraction;
 
 namespace Clipboard.Text
 {
-    public class XmlReader : IDocumentReader
+    public sealed class XmlReader : IDocumentReader
     {
-        public string Read(FileStream fileStream)
+        public string Read(Stream stream)
         {
             var doc = new XmlDocument();
-            doc.Load(fileStream);
+            doc.Load(stream);
             return doc.InnerText;
         }
 
-        public Task<string> ReadAsync(FileStream fileStream)
+        public Task<string> ReadAsync(Stream stream)
         {
-            return Task.FromResult(Read(fileStream));
+            return Task.FromResult(Read(stream));
         }
     }
 }
