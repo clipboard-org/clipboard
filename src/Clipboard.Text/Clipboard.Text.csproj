@@ -10,6 +10,9 @@
     <RepositoryUrl>https://github.com/clipboard-org/clipboard</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>text extraction documents pdf word excel powerpoint</PackageTags>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
