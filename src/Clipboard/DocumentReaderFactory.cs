@@ -11,40 +11,40 @@ namespace Clipboard
         {
             switch(contentType)
             {
-                case ContentTypeNames.Application.Pdf:
+                case ContentType.Application.Pdf:
                     return new PdfReader();
-                case ContentTypeNames.Application.Docx:
-                case ContentTypeNames.Application.Dotx:
-                case ContentTypeNames.Application.Dotm:
+                case ContentType.Application.Docx:
+                case ContentType.Application.Dotx:
+                case ContentType.Application.Dotm:
                     return new WordReader();
-                case ContentTypeNames.Application.Xls :
-                case ContentTypeNames.Application.Xlsx:
-                case ContentTypeNames.Application.Xltx:
-                case ContentTypeNames.Application.Xlsm:
-                case ContentTypeNames.Application.Xltm:
-                case ContentTypeNames.Application.Xlam:
-                case ContentTypeNames.Application.Xlsb:
+                case ContentType.Application.Xls :
+                case ContentType.Application.Xlsx:
+                case ContentType.Application.Xltx:
+                case ContentType.Application.Xlsm:
+                case ContentType.Application.Xltm:
+                case ContentType.Application.Xlam:
+                case ContentType.Application.Xlsb:
                     return new ExcelReader();
-                case ContentTypeNames.Application.Ppt :
-                    throw new System.Exception("Unsupported file type");
-                case ContentTypeNames.Application.Pptx:
-                case ContentTypeNames.Application.Potx:
-                case ContentTypeNames.Application.Ppsx:
-                case ContentTypeNames.Application.Ppam:
-                case ContentTypeNames.Application.Pptm:
-                case ContentTypeNames.Application.Potm:
-                case ContentTypeNames.Application.Ppsm:
+                case ContentType.Application.Ppt :
+                    throw new UnsupportedFileException("Unsupported file type");
+                case ContentType.Application.Pptx:
+                case ContentType.Application.Potx:
+                case ContentType.Application.Ppsx:
+                case ContentType.Application.Ppam:
+                case ContentType.Application.Pptm:
+                case ContentType.Application.Potm:
+                case ContentType.Application.Ppsm:
                     return new PowerpointReader();
-                case ContentTypeNames.Text.Plain:
+                case ContentType.Text.Plain:
                     return new PlainReader();
-                case ContentTypeNames.Text.Csv:
+                case ContentType.Text.Csv:
                     return new CsvReader();
-                case ContentTypeNames.Text.Html:
+                case ContentType.Text.Html:
                     return new HtmlReader();
-                case ContentTypeNames.Text.Xml:
+                case ContentType.Text.Xml:
                     return new XmlReader();
                 default:
-                    throw new System.Exception("Unsupported file type");
+                    throw new UnsupportedFileException("Unsupported file type");
             }
         }
     }

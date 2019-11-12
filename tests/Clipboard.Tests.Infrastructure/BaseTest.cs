@@ -8,7 +8,7 @@ namespace Clipboard.Tests.Infrastructure
 {
     public abstract class BaseTest
     {
-        private readonly string _fileExtension;
+        protected readonly string _fileExtension;
 
         public BaseTest(string fileExtension)
         {
@@ -64,7 +64,7 @@ namespace Clipboard.Tests.Infrastructure
         {
             var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
 
-            using (var extractor = TextExtractor.Open(fileStream, TextExtractor.GetContentType(fileStream.Name)))
+            using (var extractor = TextExtractor.Open(fileStream, ContentTypeExtractor.Extract(fileStream.Name)))
             {
                 var text = extractor.Extract();
                 Assert.False(string.IsNullOrEmpty(text));
@@ -76,7 +76,7 @@ namespace Clipboard.Tests.Infrastructure
         {
             var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
 
-            using (var extractor = TextExtractor.Open(fileStream,  TextExtractor.GetContentType(fileStream.Name)))
+            using (var extractor = TextExtractor.Open(fileStream,  ContentTypeExtractor.Extract(fileStream.Name)))
             {
                 var text = await extractor.ExtractAsync();
                 Assert.False(string.IsNullOrEmpty(text));
@@ -150,7 +150,7 @@ namespace Clipboard.Tests.Infrastructure
             {
                 var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\missing.{_fileExtension}");
 
-                using (var extractor = TextExtractor.Open(fileStream, TextExtractor.GetContentType(fileStream.Name)))
+                using (var extractor = TextExtractor.Open(fileStream, ContentTypeExtractor.Extract(fileStream.Name)))
                 {
                     return extractor.Extract();
                 }
@@ -166,7 +166,7 @@ namespace Clipboard.Tests.Infrastructure
             {
                 var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\missing.{_fileExtension}");
 
-                using (var extractor = TextExtractor.Open(fileStream, TextExtractor.GetContentType(fileStream.Name)))
+                using (var extractor = TextExtractor.Open(fileStream, ContentTypeExtractor.Extract(fileStream.Name)))
                 {
                     return extractor.ExtractAsync();
                 }
