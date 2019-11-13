@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.StaticFiles;
-using System;
+﻿using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+[assembly: InternalsVisibleTo("Clipboard.Tests")]
 
 namespace Clipboard
 {

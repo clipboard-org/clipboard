@@ -47,9 +47,7 @@ steps:
   displayName: 'dotnet test'
   inputs:
     command: 'test'
-    projects: |
-      tests/**/*.csproj
-      !tests/*Infrastructure*/*.csproj
+    projects: 'tests/**/*.csproj'
     arguments: '-- xunit.parallelizeAssembly=true'
 
 - task: PublishBuildArtifacts@1

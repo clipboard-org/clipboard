@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-[assembly: InternalsVisibleTo("Clipboard.Tests.Infrastructure")]
-namespace Clipboard
+﻿namespace Clipboard
 {
     public static class ContentType
     {

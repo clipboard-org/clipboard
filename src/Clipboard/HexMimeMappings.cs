@@ -4,7 +4,6 @@
     {
         private const string Pdf = "255044462D";
         private const string Ppt = "A0461DF0";
-        private const string Xml = "3C3F786D6C20";
         private const string Rtf = "7B5C727466";
 
         public static bool TryGetValue(string hex, out string value)
@@ -17,11 +16,6 @@
             else if (hex.StartsWith(Ppt))
             {
                 value = ContentType.Application.Ppt;
-                return true;
-            }                
-            else if (hex.StartsWith(Xml))
-            {
-                value = ContentType.Text.Xml;
                 return true;
             }
             else if (hex.StartsWith(Rtf))
