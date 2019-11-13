@@ -36,7 +36,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public void Extract_FromFileStream_NoException()
+        public void Extract_From_FileStream_NoException()
         {
             var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
 
@@ -48,7 +48,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public async Task Extract_FromFileStream_Async_NoException()
+        public async Task Extract_From_FileStream_Async_NoException()
         {
             var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
 
@@ -60,7 +60,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public void Extract_FromStreamAndContentType_NoException()
+        public void Extract_From_Stream_And_ContentType_NoException()
         {
             var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
 
@@ -72,7 +72,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public async Task Extract_FromStreamAndContentType_Async_NoException()
+        public async Task Extract_From_Stream_And_ContentType_Async_NoException()
         {
             var fileStream = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}");
 
@@ -84,7 +84,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public void Extract_FromFilePath_Missing_Exception()
+        public void Extract_From_File_Path_Missing_Exception()
         {
             var ex = Record.Exception(() =>
             {
@@ -98,7 +98,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public async Task Extract_FromFilePath_Async_Missing_Exception()
+        public async Task Extract_From_File_Path_Async_Missing_Exception()
         {
             var ex = await Record.ExceptionAsync(() =>
             {
@@ -112,7 +112,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public void Extract_FromFileStream_Missing_Exception()
+        public void Extract_From_FileStream_Missing_Exception()
         {
             var ex = Record.Exception(() =>
             {
@@ -128,7 +128,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public async Task Extract_FromFileStream_Async_Missing_Exception()
+        public async Task Extract_From_FileStream_Async_Missing_Exception()
         {
             var ex = await Record.ExceptionAsync(() =>
             {
@@ -144,7 +144,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public void Extract_FromStreamAndContentType_Missing_Exception()
+        public void Extract_From_Stream_And_ContentType_Missing_Exception()
         {
             var ex = Record.Exception(() =>
             {
@@ -160,7 +160,7 @@ namespace Clipboard.Tests.TextExtractor
         }
 
         [Fact]
-        public async Task Extract_FromStreamAndContentType_Async_Missing_Exception()
+        public async Task Extract_From_Stream_And_ContentType_Async_Missing_Exception()
         {
             var ex = await Record.ExceptionAsync(() =>
             {
