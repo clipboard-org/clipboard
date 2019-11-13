@@ -17,7 +17,8 @@ namespace Clipboard
             // Check if its an openxml file.
             if (hex.StartsWith("504B0304") || hex.StartsWith("504B0506") || hex.StartsWith("504B0708"))
             {
-                using (var package = Package.Open(new MemoryStream(bytes.GetUnderlyingArray().Array)))
+                using(var ms = new MemoryStream(bytes.GetUnderlyingArray().Array))
+                using (var package = Package.Open(ms))
                 {
                     if (package.PartExists(new Uri("/word/document.xml", UriKind.Relative)))
                         return ContentType.Application.Docx;
