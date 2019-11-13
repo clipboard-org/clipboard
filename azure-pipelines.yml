@@ -16,9 +16,16 @@ variables:
 
 steps:
 - task: UseDotNet@2
+  displayName: 'Install .Net core 2.2.300'
   inputs:
     packageType: 'sdk'
     version: '2.2.300'
+
+- task: UseDotNet@2
+  displayName: 'Install .Net core 3.0.100'
+  inputs:
+    packageType: 'sdk'
+    version: '3.0.100'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
@@ -47,9 +54,7 @@ steps:
   displayName: 'dotnet test'
   inputs:
     command: 'test'
-    projects: |
-      tests/**/*.csproj
-      !tests/*Infrastructure*/*.csproj
+    projects: 'tests/**/*.csproj'
     arguments: '-- xunit.parallelizeAssembly=true'
 
 - task: PublishBuildArtifacts@1
