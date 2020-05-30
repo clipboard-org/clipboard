@@ -42,7 +42,7 @@ jobs:
 
       # Test projects
     - name: Test
-      run: dotnet test --configuration Release --no-restore --verbosity normal
+      run: dotnet test "tests/Clipboard.Tests/Clipboard.Tests.csproj" --no-restore --verbosity normal
 
       # Pack Clipboard
     - name: Pack Clipboard
