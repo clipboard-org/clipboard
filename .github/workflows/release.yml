@@ -20,32 +20,48 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
 
-      # Build projects
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
+      # Build Clipboard
+    - name: Build Clipboard
+      run: dotnet build "src/Clipboard/Clipboard.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.Abstraction
+    - name: Build Clipboard.Abstraction
+      run: dotnet build "src/Clipboard.Abstraction/Clipboard.Abstraction.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.OpenXml
+    - name: Build Clipboard.OpenXml
+      run: dotnet build "src/Clipboard.OpenXml/Clipboard.OpenXml.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.Pdf
+    - name: Build Clipboard.Pdf
+      run: dotnet build "src/Clipboard.Pdf/Clipboard.Pdf.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.Text
+    - name: Build Clipboard.Text
+      run: dotnet build "src/Clipboard.Text/Clipboard.Text.csproj" --configuration Release --no-restore --verbosity normal
 
       # Test projects
     - name: Test
       run: dotnet test --configuration Release --no-restore --verbosity normal
 
       # Pack Clipboard
-    - name: Pack
+    - name: Pack Clipboard
       run: dotnet pack "src/Clipboard/Clipboard.csproj" --output "./" --configuration Release --no-restore --verbosity normal
 
       # Pack Clipboard.Abstraction
-    - name: Pack
+    - name: Pack Clipboard.Abstraction
       run: dotnet pack "src/Clipboard.Abstraction/Clipboard.Abstraction.csproj" --output "./" --configuration Release --no-restore --verbosity normal
 
       # Pack Clipboard.OpenXml
-    - name: Pack
+    - name: Pack Clipboard.OpenXml
       run: dotnet pack "src/Clipboard.OpenXml/Clipboard.OpenXml.csproj" --output "./" --configuration Release --no-restore --verbosity normal
 
       # Pack Clipboard.Pdf
-    - name: Pack
+    - name: Pack Clipboard.Pdf
       run: dotnet pack "src/Clipboard.Pdf/Clipboard.Pdf.csproj" --output "./" --configuration Release --no-restore --verbosity normal
 
       # Pack Clipboard.Text
-    - name: Pack
+    - name: Pack Clipboard.Text
       run: dotnet pack "src/Clipboard.Text/Clipboard.Text.csproj" --output "./" --configuration Release --no-restore --verbosity normal
 
 

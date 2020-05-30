@@ -7,30 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="assets\example.csv" />
-    <None Remove="assets\example.docx" />
-    <None Remove="assets\example.dotm" />
-    <None Remove="assets\example.dotx" />
-    <None Remove="assets\example.html" />
-    <None Remove="assets\example.pdf" />
-    <None Remove="assets\example.pot" />
-    <None Remove="assets\example.potm" />
-    <None Remove="assets\example.potx" />
-    <None Remove="assets\example.pps" />
-    <None Remove="assets\example.ppsm" />
-    <None Remove="assets\example.ppsx" />
-    <None Remove="assets\example.ppt" />
-    <None Remove="assets\example.pptm" />
-    <None Remove="assets\example.pptx" />
-    <None Remove="assets\example.txt" />
-    <None Remove="assets\example.xlsm" />
-    <None Remove="assets\example.xlsx" />
-    <None Remove="assets\example.xltm" />
-    <None Remove="assets\example.xltx" />
-    <None Remove="assets\example.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="assets\example.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
