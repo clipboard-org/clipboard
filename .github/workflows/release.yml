@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    branches: [ release/* ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+      # Install .NET Core
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+
+      # Restore projects
+    - name: Install dependencies
+      run: dotnet restore
+
+      # Build projects
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+      # Test projects
+    - name: Test
+      run: dotnet test --configuration Release --no-restore --verbosity normal
+
+      # Pack Clipboard
+    - name: Pack
+      run: dotnet pack "src/Clipboard/Clipboard.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+      # Pack Clipboard.Abstraction
+    - name: Pack
+      run: dotnet pack "src/Clipboard.Abstraction/Clipboard.Abstraction.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+      # Pack Clipboard.OpenXml
+    - name: Pack
+      run: dotnet pack "src/Clipboard.OpenXml/Clipboard.OpenXml.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+      # Pack Clipboard.Pdf
+    - name: Pack
+      run: dotnet pack "src/Clipboard.Pdf/Clipboard.Pdf.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+      # Pack Clipboard.Text
+    - name: Pack
+      run: dotnet pack "src/Clipboard.Text/Clipboard.Text.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+
+      # Publish projects
+    - name: publish
+      run: dotnet nuget push *.nupkg --skip-duplicate --no-symbols --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
