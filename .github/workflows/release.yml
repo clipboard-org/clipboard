@@ -1,0 +1,70 @@
+name: Release
+
+on:
+  push:
+    branches: [ release/* ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+      # Install .NET Core
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+
+      # Restore projects
+    - name: Install dependencies
+      run: dotnet restore
+
+      # Build Clipboard
+    - name: Build Clipboard
+      run: dotnet build "src/Clipboard/Clipboard.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.Abstraction
+    - name: Build Clipboard.Abstraction
+      run: dotnet build "src/Clipboard.Abstraction/Clipboard.Abstraction.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.OpenXml
+    - name: Build Clipboard.OpenXml
+      run: dotnet build "src/Clipboard.OpenXml/Clipboard.OpenXml.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.Pdf
+    - name: Build Clipboard.Pdf
+      run: dotnet build "src/Clipboard.Pdf/Clipboard.Pdf.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.Text
+    - name: Build Clipboard.Text
+      run: dotnet build "src/Clipboard.Text/Clipboard.Text.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Test projects
+    - name: Test
+      run: dotnet test "tests/Clipboard.Tests/Clipboard.Tests.csproj" --no-restore --verbosity normal
+
+      # Pack Clipboard
+    - name: Pack Clipboard
+      run: dotnet pack "src/Clipboard/Clipboard.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+      # Pack Clipboard.Abstraction
+    - name: Pack Clipboard.Abstraction
+      run: dotnet pack "src/Clipboard.Abstraction/Clipboard.Abstraction.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+      # Pack Clipboard.OpenXml
+    - name: Pack Clipboard.OpenXml
+      run: dotnet pack "src/Clipboard.OpenXml/Clipboard.OpenXml.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+      # Pack Clipboard.Pdf
+    - name: Pack Clipboard.Pdf
+      run: dotnet pack "src/Clipboard.Pdf/Clipboard.Pdf.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+      # Pack Clipboard.Text
+    - name: Pack Clipboard.Text
+      run: dotnet pack "src/Clipboard.Text/Clipboard.Text.csproj" --output "./" --configuration Release --no-restore --verbosity normal
+
+
+      # Publish projects
+    - name: publish
+      run: dotnet nuget push *.nupkg --skip-duplicate --no-symbols --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

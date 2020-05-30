@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+      # Install .NET Core
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+
+      # Restore projects
+    - name: Install dependencies
+      run: dotnet restore
+
+      # Build Clipboard
+    - name: Build Clipboard
+      run: dotnet build "src/Clipboard/Clipboard.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.Abstraction
+    - name: Build Clipboard.Abstraction
+      run: dotnet build "src/Clipboard.Abstraction/Clipboard.Abstraction.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.OpenXml
+    - name: Build Clipboard.OpenXml
+      run: dotnet build "src/Clipboard.OpenXml/Clipboard.OpenXml.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.Pdf
+    - name: Build Clipboard.Pdf
+      run: dotnet build "src/Clipboard.Pdf/Clipboard.Pdf.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Build Clipboard.Text
+    - name: Build Clipboard.Text
+      run: dotnet build "src/Clipboard.Text/Clipboard.Text.csproj" --configuration Release --no-restore --verbosity normal
+
+      # Test projects
+    - name: Test
+      run: dotnet test "tests/Clipboard.Tests/Clipboard.Tests.csproj" --no-restore --verbosity normal

@@ -16,7 +16,7 @@ namespace Clipboard.Tests.TextExtractor
         [Fact]
         public void Extract_From_Bytes_NoException()
         {
-            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}"))
+            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/assets/example.{_fileExtension}"))
             {
                 var buffer = new byte[file.Length];
                 file.Read(buffer);
@@ -32,7 +32,7 @@ namespace Clipboard.Tests.TextExtractor
         [Fact]
         public async Task Extract_From_Bytes_Async_NoException()
         {
-            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}"))
+            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/assets/example.{_fileExtension}"))
             {
                 var buffer = new byte[file.Length];
                 file.Read(buffer);
@@ -48,7 +48,7 @@ namespace Clipboard.Tests.TextExtractor
         [Fact]
         public void Extract_From_ReadOnlyMemory_NoException()
         {
-            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}"))
+            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/assets/example.{_fileExtension}"))
             {
                 var buffer = new byte[file.Length];
                 file.Read(buffer);
@@ -64,7 +64,7 @@ namespace Clipboard.Tests.TextExtractor
         [Fact]
         public async Task Extract_From_ReadOnlyMemory_Async_NoException()
         {
-            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}"))
+            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/assets/example.{_fileExtension}"))
             {
                 var buffer = new byte[file.Length];
                 file.Read(buffer);
@@ -80,7 +80,7 @@ namespace Clipboard.Tests.TextExtractor
         [Fact]
         public void Extract_From_Stream_NoException()
         {
-            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}"))
+            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/assets/example.{_fileExtension}"))
             using (var extractor = Extractor.Open((Stream)file))
             {
                 var text = extractor.Extract();
@@ -91,7 +91,7 @@ namespace Clipboard.Tests.TextExtractor
         [Fact]
         public async Task Extract_From_Stream_Async_NoException()
         {
-            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\assets\\example.{_fileExtension}"))
+            using (var file = File.OpenRead($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/assets/example.{_fileExtension}"))
             using (var extractor = Extractor.Open((Stream)file))
             {
                 var text = await extractor.ExtractAsync();
