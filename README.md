@@ -1,7 +1,8 @@
+![Clipboard](https://github.com/clipboard-org/clipboard/blob/master/src/Clipboard/images/icon.png)
 # Clipboard
 Text exctraction done the easy way
 
-[![Build Status](https://dev.azure.com/matthewhope396/Clipboard/_apis/build/status/clipboard-org.clipboard?branchName=master)](https://dev.azure.com/matthewhope396/Clipboard/_build/latest?definitionId=4&branchName=master)
+![Build](https://github.com/clipboard-org/clipboard/workflows/Build/badge.svg)
 
 ## Getting started
 ### Referencing the package
