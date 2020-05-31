@@ -1,9 +1,7 @@
 ﻿using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Clipboard.Abstraction;
-using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas.Parser;
+using PdfSharpCore.Pdf.IO;
 
 namespace Clipboard.Pdf
 {
@@ -11,20 +9,9 @@ namespace Clipboard.Pdf
     {
         public string Read(Stream stream)
         {
-            using (var pdfReader = new iText.Kernel.Pdf.PdfReader(stream))
-            using (var document = new PdfDocument(pdfReader))
+            using (var document = PdfSharpCore.Pdf.IO.PdfReader.Open(stream, PdfDocumentOpenMode.ReadOnly))
             {
-                var sb = new StringBuilder();
-
-                for (int i = 1; i <= document.GetNumberOfPages(); i++)
-                {
-                    var page = document.GetPage(i);
-                    var text = PdfTextExtractor.GetTextFromPage(page);
-
-                    sb.AppendLine(text);
-                }
-
-                return sb.ToString();
+                return document.Pages.ExtractText();
             }
         }
 

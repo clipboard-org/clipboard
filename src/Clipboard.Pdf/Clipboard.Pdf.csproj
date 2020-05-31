@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="images\icon.png" Pack="true" PackagePath=""/>
+    <None Include="images\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   
   <ItemGroup>
@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="itext7" Version="7.1.8" />
+    <PackageReference Include="PdfSharpCore" Version="1.1.26" />
   </ItemGroup>
 
   <ItemGroup>
