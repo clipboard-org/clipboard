@@ -1,17 +1,17 @@
 ![Clipboard](https://github.com/clipboard-org/clipboard/blob/master/src/Clipboard/images/icon.png)
 # Clipboard
-Text exctraction done the easy way
+Text extraction done the easy way
 
 ![Build](https://github.com/clipboard-org/clipboard/workflows/Build/badge.svg)
 
 ## Getting started
 ### Referencing the package
-To start using cliboard you need to install the nuget package, which can be found [here](https://www.nuget.org/packages/Clipboard/)
+To start using Clipboard you need to install the [NuGet package](https://www.nuget.org/packages/Clipboard/).
 
-Alternatively you can intall the package by executing: `Install-Package Clipboard`
+Alternatively, you can install the package by executing: `Install-Package Clipboard`
 
 ### Extracting text
-Extracting text is extremely simple using clipboard, you just need to supply a file path or filstream to the `TextExtractor.Open` method.
+Extracting text is extremely simple using Clipboard. You just need to supply a file path or filestream to the `TextExtractor.Open` method.
 
 ### Example
 ```c#
