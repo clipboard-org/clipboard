@@ -1,0 +1,33 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: HtmlAgilityPack
+    versions:
+    - 1.11.30
+    - 1.11.31
+    - 1.11.32
+  - dependency-name: PdfSharpCore
+    versions:
+    - 1.2.11
+    - 1.2.12
+    - 1.2.13
+    - 1.2.15
+  - dependency-name: Microsoft.NET.Test.Sdk
+    versions:
+    - 16.8.3
+    - 16.9.1
+  - dependency-name: DocumentFormat.OpenXml
+    versions:
+    - 2.12.1
+    - 2.12.2
+  - dependency-name: coverlet.collector
+    versions:
+    - 3.0.2
+  - dependency-name: itext7
+    versions:
+    - 7.1.14
