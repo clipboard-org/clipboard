@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="itext7" Version="7.1.8" />
+    <PackageReference Include="itext7" Version="8.0.1" />
     <PackageReference Include="PdfSharpCore" Version="1.1.26" />
   </ItemGroup>
 
